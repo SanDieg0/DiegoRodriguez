@@ -1,0 +1,11 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'VT323', monospace;
+}
+
+
+.cardname{
+	border: 1px solid black;
+	border-radious: 10px;
+}
