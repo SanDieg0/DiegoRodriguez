@@ -1,0 +1,3 @@
+function posicion(x,y){
+	
+}
