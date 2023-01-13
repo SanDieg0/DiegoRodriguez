@@ -5,6 +5,13 @@ let card2 = document.getElementsByClassName('card')[1];
 let card3 = document.getElementsByClassName('card')[2];
 let card4 = document.getElementsByClassName('card')[3];
 
+profilephoto.style.top = "40%";
+cardname.style.top = "30%";
+card1.style.display = "none";
+card2.style.display = "none";
+card3.style.display = "none";
+card4.style.display = "none";
+
 function coordenadasAleatorias(){
 	let coordenadas1 = [];
 	for(i=0; i<=2000; i++){
@@ -29,6 +36,7 @@ let coordenadas4 = coordenadasAleatorias();
 
 let x = 0;
 let y;
+let z;
 
 function transicion(){
 	y = setInterval(posicion, 90);
@@ -36,13 +44,13 @@ function transicion(){
 
 function posicion(){
 	profilephoto.style.transform = `translate(${coordenadas1[x]}px , ${coordenadas2[x]}px)`;
-	cardname.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas4[x]}px)`;
+	//cardname.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas4[x]}px)`;
 	card1.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas1[x]}px)`;
 	card2.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas2[x]}px)`;
 	card3.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas3[x]}px)`;
 	card4.style.transform = `translate(${coordenadas4[x]}px , ${coordenadas1[x]}px)`;
 
-	console.log(x);
+	//console.log(x);
 	
 	if(x<=2000){
 		x = x + 1;
@@ -50,6 +58,55 @@ function posicion(){
 	}else{
 		x=0
 	}
+}
+
+
+
+/* ------------------------------------------------------------------------------------ */
+
+function aleatorio(mini, maxi){
+    let resultado;
+    resultado = Math.floor(Math.random() * (maxi - mini + 1)) + mini;
+    return resultado;
+}
+
+
+let myBody = document.getElementsByClassName('cuerpo')[0];
+let ancho = myBody.clientWidth;
+let alto = myBody.clientHeight;
+
+function pepas (){
+    for(i=0; i<aleatorio(9,10); i++){
+	let bodySection = document.getElementsByClassName('bodySection')[0];
+        let pepita = document.createElement("div");
+        bodySection.appendChild(pepita);
+        
+        pepita.style.position = "absolute";
+        pepita.style.backgroundColor = "#d9d9d9";
+        pepita.style.width = aleatorio(90,90)+"px";
+        pepita.style.height = aleatorio(90,90)+"px";
+        pepita.style.borderRadius = "50%";
+        pepita.style.top = aleatorio(0, 0.9*alto)+"px";
+        pepita.style.left = aleatorio(0, 0.9*ancho)+"px";
+
+	transicion2();
+
+	function transicion2(){
+		z = setInterval(posicion2, 90);
+	}
+
+	function posicion2(){
+		pepita.style.transform = `translate(${coordenadas4[x]}px , ${coordenadas1[x]}px)`;
+
+		if(x<=2000){
+			x = x + 1;
+			return x;
+		}else{
+			x=0
+		}
+	}
+    }
+
 }
 
 

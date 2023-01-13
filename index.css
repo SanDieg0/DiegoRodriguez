@@ -16,9 +16,15 @@ html{
 	width: 300px;
 	text-align: center;
 	margin: 0 auto;
+	position: relative;
+	z-index: 1;
 }
 
+.bodySection{
 
+	width: 100vw;
+	height: 100vh;
+}
 
 .pepita{
 	display: block;
@@ -43,6 +49,7 @@ html{
 	width: 250px;
 	height: 250px;
 	margin: 10px auto;
+	z-index: 2;
 }
 .profilephoto img{
 	border-radius: 50%;
@@ -58,6 +65,7 @@ html{
 	border-radius: 15px;
 	width: 400px;
 	//display: none;
+
 }
 .card picture{
 	display: block;
