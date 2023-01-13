@@ -7,7 +7,7 @@ let card4 = document.getElementsByClassName('card')[3];
 
 function coordenadasAleatorias(){
 	let coordenadas1 = [];
-	for(i=0; i<=100; i++){
+	for(i=0; i<=2000; i++){
 		let randomValue = Math.random();
 		let valor = 0;
 		if(randomValue<0.5){
@@ -31,7 +31,7 @@ let x = 0;
 let y;
 
 function transicion(){
-	y = setInterval(posicion, 120);
+	y = setInterval(posicion, 90);
 }
 
 function posicion(){
@@ -44,7 +44,7 @@ function posicion(){
 
 	console.log(x);
 	
-	if(x<=100){
+	if(x<=2000){
 		x = x + 1;
 		return x;
 	}else{
