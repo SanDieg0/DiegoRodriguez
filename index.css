@@ -5,7 +5,8 @@
 
 }
 html{
-	font-family: 'VT323', monospace;
+	//font-family: 'VT323', monospace;
+	font-family: 'Major Mono Display', monospace;
 	scroll-behavior: smooth;
 }
 
