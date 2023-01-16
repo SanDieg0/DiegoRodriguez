@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<style>
+.test {
+  background-color: yellow;
+}
+.bola{
+  	width: 40px;
+    height: 40px;
+    background: linear-gradient(90deg, #51c7b9, #c751b9);
+    border-radius: 50%;
+    position: fixed;
+  }
+</style>
+
+<body style="font-size:20px;height:1500px">
+
+<h1>The onscroll Event</h1>
+
+<p id="myP" style="position:fixed: margin-top: 100px;">
+If you scroll 50 pixels down from the top of this page, the class "test" is added to this paragraph.
+Scroll up again to remove the class.</p>
+
+<div class="bola"></div>
+
+<script>
+window.onscroll = function(){miFuncion()};
+
+function miFuncion(){
+	if(document.documentElement.scrollTop > 100){
+		alert("te pasaste de los 100px");
+	}
+}
+
+
+
+//window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  if (document.documentElement.scrollTop > 50) {
+    document.getElementById("myP").className = "test";
+  } else {
+    document.getElementById("myP").className = "";
+  }
+}
+</script>
+
+</body>
+</html>
