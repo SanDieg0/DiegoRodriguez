@@ -44,6 +44,8 @@ function transicion(){
 
 function posicion(){
 	profilephoto.style.transform = `translate(${coordenadas1[x]}px , ${coordenadas2[x]}px)`;
+	profilephoto.style.margin = `mitad(0, ${profilephoto.clientWidth})`;
+
 	//cardname.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas4[x]}px)`;
 	card1.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas1[x]}px)`;
 	card2.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas2[x]}px)`;
@@ -81,13 +83,15 @@ function pepas (){
         let pepita = document.createElement("div");
         bodySection.appendChild(pepita);
         
-        pepita.style.position = "absolute";
+        //pepita.style.position = "absolute";
         pepita.style.backgroundColor = "#d9d9d9";
         pepita.style.width = aleatorio(90,90)+"px";
         pepita.style.height = aleatorio(90,90)+"px";
         pepita.style.borderRadius = "50%";
         pepita.style.top = aleatorio(0, 0.9*alto)+"px";
         pepita.style.left = aleatorio(0, 0.9*ancho)+"px";
+
+	pepita.style.position = "fixed";
 
 	transicion2();
 
@@ -109,6 +113,12 @@ function pepas (){
 
 }
 
+/* ------------------------------------------------------------------------------------------- */
+myBody.style.height = `20 * $alto`;
 
-
+/* ------------------------------------------------------------------------------------------- */
+function mitad (anchoElement){
+	mitadIzquierda = ancho - (anchoElement / 2);
+	return mitadIzquierda;
+}
 
