@@ -18,9 +18,9 @@ function coordenadasAleatorias(){
 		let randomValue = Math.random();
 		let valor = 0;
 		if(randomValue<0.5){
-			valor = valor + 0.5;
+			valor = valor + 0.3;
 		}else{
-			valor = valor - 0.5;
+			valor = valor - 0.3;
 		}
 		coordenadas1.push(valor);
 		//console.log(coordenadas1);
@@ -44,7 +44,8 @@ function transicion(){
 
 function posicion(){
 	profilephoto.style.transform = `translate(${coordenadas1[x]}px , ${coordenadas2[x]}px)`;
-	profilephoto.style.margin = `mitad(0, ${profilephoto.clientWidth})`;
+	
+
 
 	//cardname.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas4[x]}px)`;
 	card1.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas1[x]}px)`;
@@ -114,11 +115,31 @@ function pepas (){
 }
 
 /* ------------------------------------------------------------------------------------------- */
-myBody.style.height = `20 * $alto`;
+let mainSection = document.getElementsByClassName('mainSection')[0];
+let anchoMain = myBody.clientWidth;
+let altoMain = myBody.clientHeight;
+let alto2 = alto * 2;
+mainSection.style.height = `${alto2}px`;
 
 /* ------------------------------------------------------------------------------------------- */
 function mitad (anchoElement){
-	mitadIzquierda = ancho - (anchoElement / 2);
+	mitadIzquierda = (window.innerWidth / 2) - (anchoElement / 2);
 	return mitadIzquierda;
 }
 
+profilephoto.style.marginLeft = `${mitad(profilephoto.clientWidth)}px`;
+
+
+/*
+const heightOutput = document.querySelector("#height");
+const widthOutput = document.querySelector("#width");
+
+function updateSize() {
+  heightOutput.textContent = window.innerHeight;
+  widthOutput.textContent = window.innerWidth;
+}
+
+updateSize();
+window.addEventListener("resize", updateSize);
+
+*/
