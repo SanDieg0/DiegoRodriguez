@@ -5,20 +5,25 @@
 
 }
 html{
-	//font-family: 'VT323', monospace;
-	font-family: 'Major Mono Display', monospace;
+	font-family: 'VT323', monospace;
+	//font-family: 'Major Mono Display', monospace;
 	scroll-behavior: smooth;
 }
 
-
+body{
+	overflow-y: scroll;
+	height: 200%;
+}
 
 .cardname{
 	border-radius: 10px;
 	width: 300px;
 	text-align: center;
 	margin: 0 auto;
-	position: relative;
+	/*position: relative;*/
 	z-index: 1;
+
+	position: fixed;
 }
 
 .bodySection{
@@ -40,17 +45,21 @@ html{
 	width: 30px;
 	border-radius: 50%;
 	background: #d9d9d9;
+
+	position: fixed;
 }
 
 
 
 .profilephoto{
 	display: block;
-	position: relative;
+	/*position: relative;*/
 	width: 250px;
 	height: 250px;
-	margin: 10px auto;
+	/*margin: 10px auto;*/
 	z-index: 2;
+
+	position: fixed;
 }
 .profilephoto img{
 	border-radius: 50%;
@@ -65,7 +74,7 @@ html{
 	margin: 10px;
 	border-radius: 15px;
 	width: 400px;
-	//display: none;
+	/*display: none;*/
 
 }
 .card picture{
@@ -73,6 +82,7 @@ html{
 	position: relative;
 	width: 50px;
 
+	position: fixed;
 }
 .card picture img{
 	border-radius: 15%;
