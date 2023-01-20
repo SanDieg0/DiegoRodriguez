@@ -4,6 +4,14 @@ let card1 = document.getElementsByClassName('card')[0];
 let card2 = document.getElementsByClassName('card')[1];
 let card3 = document.getElementsByClassName('card')[2];
 let card4 = document.getElementsByClassName('card')[3];
+let myBody = document.getElementsByClassName('cuerpo')[0];
+let bodySection = document.getElementsByClassName('bodySection')[0];
+
+
+let ancho = window.innerWidth;
+let alto = window.innerHeight;
+
+/*function pruebaAnchoAlto(){	console.log(ancho + "fuera de funcion");	console.log(alto + "fuera de funcion");	ancho = window.innerWidth;	alto = window.innerHeight;}	window.addEventListener("resize", pruebaAnchoAlto);*/
 
 profilephoto.style.top = "40%";
 cardname.style.top = "30%";
@@ -11,6 +19,21 @@ card1.style.display = "none";
 card2.style.display = "none";
 card3.style.display = "none";
 card4.style.display = "none";
+
+/* -------------------------------------------------------------*/
+
+window.addEventListener("resize", objectsDimention);
+window.addEventListener("resize", pepas);
+
+function objectsDimention(){
+	profilephoto.style.marginLeft = `${mitad(profilephoto.clientWidth)}px`;
+	bodySection.style.width = `${window.innerWidth}px`;
+}
+
+
+
+/* ----------------------------------------------------------*/
+
 
 function coordenadasAleatorias(){
 	let coordenadas1 = [];
@@ -73,14 +96,30 @@ function aleatorio(mini, maxi){
     return resultado;
 }
 
+function pepitaTopFunction(){
+	let miArrayTop = [];
+	for(i=0; i<10; i++){
+		miArrayTop.push(Math.random());
+	}
+	return miArrayTop;
+}
 
-let myBody = document.getElementsByClassName('cuerpo')[0];
-let ancho = myBody.clientWidth;
-let alto = myBody.clientHeight;
+let pepitaTop = pepitaTopFunction();
 
+
+function pepitaLeftFunction(){
+	let miArrayLeft = [];
+	for(i=0; i<10; i++){
+		miArrayLeft.push(Math.random());
+	}
+	return miArrayLeft;
+}
+
+let pepitaLeft = pepitaLeftFunction();
+console.log(pepitaLeft)
 function pepas (){
-    for(i=0; i<aleatorio(9,10); i++){
-	let bodySection = document.getElementsByClassName('bodySection')[0];
+    for(i=0; i<10; i++){
+	
         let pepita = document.createElement("div");
         bodySection.appendChild(pepita);
         
@@ -89,8 +128,8 @@ function pepas (){
         pepita.style.width = aleatorio(90,90)+"px";
         pepita.style.height = aleatorio(90,90)+"px";
         pepita.style.borderRadius = "50%";
-        pepita.style.top = aleatorio(0, 0.9*alto)+"px";
-        pepita.style.left = aleatorio(0, 0.9*ancho)+"px";
+        pepita.style.top = `${pepitaTop[i]*alto}px`;
+        pepita.style.left = `${pepitaLeft[i]*ancho}px`;
 
 	pepita.style.position = "fixed";
 
@@ -111,7 +150,8 @@ function pepas (){
 		}
 	}
     }
-
+console.log(ancho);
+console.log(alto);
 }
 
 /* ------------------------------------------------------------------------------------------- */
@@ -127,7 +167,6 @@ function mitad (anchoElement){
 	return mitadIzquierda;
 }
 
-profilephoto.style.marginLeft = `${mitad(profilephoto.clientWidth)}px`;
 
 
 /*
