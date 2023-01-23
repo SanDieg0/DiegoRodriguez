@@ -20,10 +20,9 @@ card2.style.display = "none";
 card3.style.display = "none";
 card4.style.display = "none";
 
-/* -------------------------------------------------------------*/
+/* -----------------UBICAR EN LA MITAD CUANDO HAY RESIZE-------------------------*/
 
 window.addEventListener("resize", objectsDimention);
-window.addEventListener("resize", pepas);
 
 function objectsDimention(){
 	profilephoto.style.marginLeft = `${mitad(profilephoto.clientWidth)}px`;
@@ -32,8 +31,7 @@ function objectsDimention(){
 
 
 
-/* ----------------------------------------------------------*/
-
+/* ----------------COORDENADAS ALEATORIAS------------------------*/
 
 function coordenadasAleatorias(){
 	let coordenadas1 = [];
@@ -56,45 +54,16 @@ let coordenadas2 = coordenadasAleatorias();
 let coordenadas3 = coordenadasAleatorias();
 let coordenadas4 = coordenadasAleatorias();
 
-
-let x = 0;
-let y;
-let z;
-
-function transicion(){
-	y = setInterval(posicion, 90);
-}
-
-function posicion(){
-	profilephoto.style.transform = `translate(${coordenadas1[x]}px , ${coordenadas2[x]}px)`;
-	
-
-
-	//cardname.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas4[x]}px)`;
-	card1.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas1[x]}px)`;
-	card2.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas2[x]}px)`;
-	card3.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas3[x]}px)`;
-	card4.style.transform = `translate(${coordenadas4[x]}px , ${coordenadas1[x]}px)`;
-
-	//console.log(x);
-	
-	if(x<=2000){
-		x = x + 1;
-		return x;
-	}else{
-		x=0
-	}
-}
-
-
-
-/* ------------------------------------------------------------------------------------ */
+/* ---------------------NUMERO ALEATORIO--------------------------- */
 
 function aleatorio(mini, maxi){
     let resultado;
     resultado = Math.floor(Math.random() * (maxi - mini + 1)) + mini;
     return resultado;
 }
+
+
+/* ---------------------PROPIEDADES BURBUJAS--------------------------- */
 
 function pepitaTopFunction(){
 	let miArrayTop = [];
@@ -103,7 +72,6 @@ function pepitaTopFunction(){
 	}
 	return miArrayTop;
 }
-
 let pepitaTop = pepitaTopFunction();
 
 
@@ -114,44 +82,75 @@ function pepitaLeftFunction(){
 	}
 	return miArrayLeft;
 }
-
 let pepitaLeft = pepitaLeftFunction();
-console.log(pepitaLeft)
+
+
 function pepas (){
-    for(i=0; i<10; i++){
-	
-        let pepita = document.createElement("div");
-        bodySection.appendChild(pepita);
-        
-        //pepita.style.position = "absolute";
-        pepita.style.backgroundColor = "#d9d9d9";
-        pepita.style.width = aleatorio(90,90)+"px";
-        pepita.style.height = aleatorio(90,90)+"px";
-        pepita.style.borderRadius = "50%";
-        pepita.style.top = `${pepitaTop[i]*alto}px`;
-        pepita.style.left = `${pepitaLeft[i]*ancho}px`;
+		let coordenadax = "coordenadas"+ aleatorio(1,4);
+		let coordenaday = "coordenadas"+ aleatorio(1,4);
+	for(i=0; i<10; i++){
+		let pepita = document.createElement("div");
+		bodySection.appendChild(pepita);
 
-	pepita.style.position = "fixed";
+		//pepita.style.position = "absolute";
+		pepita.style.backgroundColor = "#d9d9d9";
+		pepita.style.width = aleatorio(90,90)+"px";
+		pepita.style.height = aleatorio(90,90)+"px";
+		pepita.style.borderRadius = "50%";
+		pepita.style.top = `${pepitaTop[i]*alto}px`;
+		pepita.style.left = `${pepitaLeft[i]*ancho}px`;
 
-	transicion2();
+		pepita.style.position = "fixed";
 
-	function transicion2(){
-		z = setInterval(posicion2, 90);
-	}
+		transicion2();
 
-	function posicion2(){
-		pepita.style.transform = `translate(${coordenadas4[x]}px , ${coordenadas1[x]}px)`;
+		function transicion2(){
 
-		if(x<=2000){
-			x = x + 1;
-			return x;
-		}else{
-			x=0
+			z = setInterval(posicion2, 90);
+		}
+
+		function posicion2(){
+			//pepita.style.transform = translate(coordenadax + "[" + x + "]" + "px" , coordenaday + "[" + x + "]" + "px");
+console.log(coordenadax + "[" + x + "]" + "px");
+			if(x<=2000){
+				x = x + 1;
+				return x;
+			}else{
+				x=0
+			}
 		}
 	}
-    }
-console.log(ancho);
-console.log(alto);
+}
+
+
+/* ----------------MOVIMIENTO CUADROS------------------------*/
+
+let x = 0;
+let y;
+let z;
+
+function transicion(){
+	y = setInterval(posicion, 90);
+}
+
+function posicion(){
+
+	//console.log(x);
+	
+	if(x<=2000){
+		//x = x + 1;
+
+		profilephoto.style.transform = `translate(${coordenadas1[x]}px , ${coordenadas2[x]}px)`;
+
+		//cardname.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas4[x]}px)`;
+		card1.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas1[x]}px)`;
+		card2.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas2[x]}px)`;
+		card3.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas3[x]}px)`;
+		card4.style.transform = `translate(${coordenadas4[x]}px , ${coordenadas1[x]}px)`;
+
+	}else{
+		x=0
+	}
 }
 
 /* ------------------------------------------------------------------------------------------- */
