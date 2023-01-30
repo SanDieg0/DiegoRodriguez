@@ -64,13 +64,27 @@ function aleatorio(mini, maxi){
     resultado = Math.floor(Math.random() * (maxi - mini + 1)) + mini;
     return resultado;
 }
-
+/* ---------------------COLOR ALEATORIO--------------------------- */
+let letras = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+function colorAleatorio(){
+	let N1 = letras[aleatorio(0,15)];
+	let N2 = letras[aleatorio(0,15)];
+	let N3 = letras[aleatorio(0,15)];
+	let N4 = letras[aleatorio(0,15)];
+	let N5 = letras[aleatorio(0,15)];
+	let N6 = letras[aleatorio(0,15)];
+	let N7 = letras[aleatorio(0,6)];
+	let N8 = letras[aleatorio(0,6)];
+	let color = `#${N1 + N2 + N3 + N4 + N5 + N6 + N7 + N8}`;
+	console.log(color);
+	return color;
+}
 
 /* ---------------------PROPIEDADES BURBUJAS--------------------------- */
 
 function pepitaTopFunction(){
 	let miArrayTop = [];
-	for(i=0; i<10; i++){
+	for(i=0; i<20; i++){
 		miArrayTop.push(Math.random());
 	}
 	return miArrayTop;
@@ -96,7 +110,8 @@ function pepas (){
 		bodySection.appendChild(pepita);
 
 		//pepita.style.position = "absolute";
-		pepita.style.backgroundColor = "#d9d9d9";
+		pepita.style.backgroundColor = `${colorAleatorio()}`;
+		pepita.style.boxShadow = `3px 3px 10px 3px #00000022`;
 		pepita.style.width = aleatorio(90,90)+"px";
 		pepita.style.height = aleatorio(90,90)+"px";
 		pepita.style.borderRadius = "50%";
