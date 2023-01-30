@@ -12,7 +12,8 @@ html{
 
 body{
 	overflow-y: scroll;
-	height: 100%;
+	overflow-x: hidden;
+	width: 100%;
 }
 
 .cardname{
@@ -30,6 +31,10 @@ body{
 
 	width: 100%;
 	height: 100%;
+}
+
+.bodySection > span, .bodySection > hgroup{
+	transition: all 0.5s;
 }
 
 .pepita{
@@ -59,7 +64,7 @@ body{
 	/*margin: 10px auto;*/
 	z-index: 2;
 
-border: 1px solid black;
+//border: 1px solid black;
 
 	position: fixed;
 }

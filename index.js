@@ -20,16 +20,34 @@ card2.style.display = "none";
 card3.style.display = "none";
 card4.style.display = "none";
 
+/* -----------------EJECUCION DE FUNCIONES-------------------------*/
+
+function primeraFuncion(){
+	//bodySection.style.display = `none`;
+	//setTimeout(funcionEjecutora, 1000);
+	funcionEjecutora();
+}
+function funcionEjecutora(){
+	//bodySection.style.display = `block`;
+	//bodySection.style.trans
+	transicion();
+	pepas();
+}
+
+
 /* -----------------UBICAR EN LA MITAD CUANDO HAY RESIZE-------------------------*/
 
 window.addEventListener("resize", objectsDimention);
 
 function objectsDimention(){
 	profilephoto.style.marginLeft = `${mitad(profilephoto.clientWidth)}px`;
-	bodySection.style.width = `${window.innerWidth}px`;
+	//bodySection.style.width = `${window.innerWidth}px`;
+	cardname.style.marginLeft = `${mitad(cardname.clientWidth)}px`;
 }
 
-
+	profilephoto.style.marginLeft = `${mitad(profilephoto.clientWidth)}px`;
+	bodySection.style.width = `${window.innerWidth}px`;
+	cardname.style.marginLeft = `${mitad(cardname.clientWidth)}px`;
 
 /* ----------------COORDENADAS ALEATORIAS------------------------*/
 
@@ -39,9 +57,9 @@ function coordenadasAleatorias(){
 		let randomValue = Math.random();
 		let valor = 0;
 		if(randomValue<0.5){
-			valor = valor + 0.3;
+			valor = valor + 2;
 		}else{
-			valor = valor - 0.3;
+			valor = valor - 0.5;
 		}
 		coordenadas1.push(valor);
 		//console.log(coordenadas1);
@@ -61,13 +79,27 @@ function aleatorio(mini, maxi){
     resultado = Math.floor(Math.random() * (maxi - mini + 1)) + mini;
     return resultado;
 }
-
+/* ---------------------COLOR ALEATORIO--------------------------- */
+let letras = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+function colorAleatorio(){
+	let N1 = letras[aleatorio(0,15)];
+	let N2 = letras[aleatorio(0,15)];
+	let N3 = letras[aleatorio(0,15)];
+	let N4 = letras[aleatorio(0,15)];
+	let N5 = letras[aleatorio(0,15)];
+	let N6 = letras[aleatorio(0,15)];
+	let N7 = letras[aleatorio(0,6)];
+	let N8 = letras[aleatorio(0,6)];
+	let color = `#${N1 + N2 + N3 + N4 + N5 + N6 + N7 + N8}`;
+	console.log(color);
+	return color;
+}
 
 /* ---------------------PROPIEDADES BURBUJAS--------------------------- */
 
 function pepitaTopFunction(){
 	let miArrayTop = [];
-	for(i=0; i<10; i++){
+	for(i=0; i<20; i++){
 		miArrayTop.push(Math.random());
 	}
 	return miArrayTop;
@@ -77,7 +109,7 @@ let pepitaTop = pepitaTopFunction();
 
 function pepitaLeftFunction(){
 	let miArrayLeft = [];
-	for(i=0; i<10; i++){
+	for(i=0; i<20; i++){
 		miArrayLeft.push(Math.random());
 	}
 	return miArrayLeft;
@@ -88,30 +120,34 @@ let pepitaLeft = pepitaLeftFunction();
 function pepas (){
 		let coordenadax = "coordenadas"+ aleatorio(1,4);
 		let coordenaday = "coordenadas"+ aleatorio(1,4);
-	for(i=0; i<10; i++){
+	for(i=0; i<20; i++){
 		let pepita = document.createElement("div");
 		bodySection.appendChild(pepita);
 
 		//pepita.style.position = "absolute";
-		pepita.style.backgroundColor = "#d9d9d9";
+		pepita.style.backgroundColor = `${colorAleatorio()}`;
+		pepita.style.boxShadow = `3px 3px 10px 3px #00000022`;
 		pepita.style.width = aleatorio(90,90)+"px";
 		pepita.style.height = aleatorio(90,90)+"px";
 		pepita.style.borderRadius = "50%";
 		pepita.style.top = `${pepitaTop[i]*alto}px`;
-		pepita.style.left = `${pepitaLeft[i]*ancho}px`;
+		pepita.style.left = `${pepitaLeft[i]*(ancho - 100)}px`;
 
 		pepita.style.position = "fixed";
+
+		pepita.style.transition = "all 0.5s";
+		pepita.style.animation = '3s infinite alternate slidein';
 
 		transicion2();
 
 		function transicion2(){
 
-			z = setInterval(posicion2, 90);
+			z = setInterval(posicion2, 50);
 		}
 
 		function posicion2(){
-			//pepita.style.transform = translate(coordenadax + "[" + x + "]" + "px" , coordenaday + "[" + x + "]" + "px");
-console.log(coordenadax + "[" + x + "]" + "px");
+			pepita.style.transform = `translate(${coordenadas4[x]}px , ${coordenadas1[x]}px)`;
+			//pepita.style.transform = translateY(`${coordenadas4[x]}px`);
 			if(x<=2000){
 				x = x + 1;
 				return x;
@@ -130,7 +166,7 @@ let y;
 let z;
 
 function transicion(){
-	y = setInterval(posicion, 90);
+	y = setInterval(posicion, 50);
 }
 
 function posicion(){
@@ -140,6 +176,7 @@ function posicion(){
 	if(x<=2000){
 		//x = x + 1;
 
+		profilephoto.style.transition = "all 0.5s";
 		profilephoto.style.transform = `translate(${coordenadas1[x]}px , ${coordenadas2[x]}px)`;
 
 		//cardname.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas4[x]}px)`;
@@ -160,24 +197,11 @@ let altoMain = myBody.clientHeight;
 let alto2 = alto * 2;
 mainSection.style.height = `${alto2}px`;
 
-/* ------------------------------------------------------------------------------------------- */
+/* ----------------------------POSICION X MEDIA DE UN ELEMENTO-------------------------------- */
 function mitad (anchoElement){
 	mitadIzquierda = (window.innerWidth / 2) - (anchoElement / 2);
 	return mitadIzquierda;
 }
 
 
-
-/*
-const heightOutput = document.querySelector("#height");
-const widthOutput = document.querySelector("#width");
-
-function updateSize() {
-  heightOutput.textContent = window.innerHeight;
-  widthOutput.textContent = window.innerWidth;
-}
-
-updateSize();
-window.addEventListener("resize", updateSize);
-
-*/
+/*----------------------------------------------------------------------------------------------*/
