@@ -20,6 +20,13 @@ card2.style.display = "none";
 card3.style.display = "none";
 card4.style.display = "none";
 
+/* -----------------EJECUCION-------------------------*/
+
+function ejecutar(){
+	setTimeout(intervalFoto, 5000);
+	setTimeout(pepas,5000);
+}
+
 /* -----------------UBICAR EN LA MITAD CUANDO HAY RESIZE-------------------------*/
 
 window.addEventListener("resize", objectsDimention);
@@ -122,14 +129,14 @@ function pepas (){
 
 		pepita.style.transition = "all 0.5s";
 
-		transicion2();
+		intervalPepas();
 
-		function transicion2(){
+		function intervalPepas(){
 
-			z = setInterval(posicion2, 150);
+			z = setInterval(posicionPepas, 150);
 		}
 
-		function posicion2(){
+		function posicionPepas(){
 			pepita.style.transform = `translate(${coordenadas4[x]}px , ${coordenadas1[x]}px)`;
 			//pepita.style.transform = translateY(`${coordenadas4[x]}px`);
 			if(x<=2000){
@@ -149,11 +156,11 @@ let x = 0;
 let y;
 let z;
 
-function transicion(){
-	y = setInterval(posicion, 150);
+function intervalFoto(){
+	y = setInterval(posicionFoto, 150);
 }
 
-function posicion(){
+function posicionFoto(){
 
 	//console.log(x);
 	

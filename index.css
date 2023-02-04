@@ -6,13 +6,15 @@
 }
 html{
 	font-family: 'VT323', monospace;
-	//font-family: 'Major Mono Display', monospace;
+	/*font-family: 'Major Mono Display', monospace;*/
 	scroll-behavior: smooth;
 }
 
 body{
 	overflow-y: scroll;
 	width: 100%;
+
+	overflow-x: hidden;
 }
 
 .cardname{
@@ -63,13 +65,16 @@ body{
 	/*margin: 10px auto;*/
 	z-index: 2;
 
-//border: 1px solid black;
+/*border: 1px solid black;*/
 
 	position: fixed;
 }
 .profilephoto img{
 	border-radius: 50%;
 	width: 250px;
+
+	box-shadow: 5px 5px 20px 5px #00000034;
+	border: 2px solid black;
 }
 
 
@@ -104,7 +109,7 @@ body{
 }
 
 .card1{
-	//height: 220px;
+	/*height: 220px;*/
 }
 .optioncontainer{
 	display: grid;
