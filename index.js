@@ -20,28 +20,54 @@ card2.style.display = "none";
 card3.style.display = "none";
 card4.style.display = "none";
 
-/* -----------------EJECUCION-------------------------*/
+/* ------------------EJECUCION------------------------------------------------------------------------------------------*/
 
 function ejecutar(){
-	setTimeout(intervalFoto, 5000);
-	setTimeout(pepas,5000);
+	setTimeout(pepas,5);
 }
 
-/* -----------------UBICAR EN LA MITAD CUANDO HAY RESIZE-------------------------*/
+/* ------------------INTERVALOS-------------------------------------------------------*/
 
-window.addEventListener("resize", objectsDimention);
-
-function objectsDimention(){
-	profilephoto.style.marginLeft = `${mitad(profilephoto.clientWidth)}px`;
-	//bodySection.style.width = `${window.innerWidth}px`;
-	cardname.style.marginLeft = `${mitad(cardname.clientWidth)}px`;
+function intervalos(fun){
+	setInterval(fun, 150);
 }
 
-	profilephoto.style.marginLeft = `${mitad(profilephoto.clientWidth)}px`;
-	bodySection.style.width = `${window.innerWidth}px`;
-	cardname.style.marginLeft = `${mitad(cardname.clientWidth)}px`;
+/* ------------------TRANSLACION------------------------------------------------------*/
+let x = 0;
+function translacion(cosa, posicionx, posiciony){
+	cosa.style.transition = "all 0.5s";
+	cosa.style.transform = `translate(${posicionx[x]}px , ${posiciony[x]}px)`;
+	if(x<=2000){
+		x = x + 1;
+		return x;
+	}else{
+		x=0
+	}
+}
 
-/* ----------------COORDENADAS ALEATORIAS------------------------*/
+/* ----------------------------POSICION X MEDIA DE UN ELEMENTO-------------------------------- */
+function mitad (anchoElement){
+	mitadIzquierda = (window.innerWidth / 2) - (anchoElement / 2);
+	return mitadIzquierda;
+}
+/* ------------------UBICAR EN LA MITAD CUANDO HAY RESIZE-----------------------------*/
+
+window.addEventListener("resize", mitadCosas);
+
+function objectsDimention(cosa){
+	cosa.style.marginLeft = `${mitad(cosa.clientWidth)}px`;
+}
+function mitadCosas(){
+	objectsDimention(profilephoto);
+	objectsDimention(cardname);
+}
+
+objectsDimention(profilephoto);
+objectsDimention(cardname);
+
+bodySection.style.width = `${window.innerWidth}px`;
+
+/* ------------------COORDENADAS ALEATORIAS---------------------------------------------*/
 
 function coordenadasAleatorias(){
 	let coordenadas1 = [];
@@ -64,14 +90,14 @@ let coordenadas2 = coordenadasAleatorias();
 let coordenadas3 = coordenadasAleatorias();
 let coordenadas4 = coordenadasAleatorias();
 
-/* ---------------------NUMERO ALEATORIO--------------------------- */
+/* ------------------NUMERO ALEATORIO------------------------------------------------ */
 
 function aleatorio(mini, maxi){
     let resultado;
     resultado = Math.floor(Math.random() * (maxi - mini + 1)) + mini;
     return resultado;
 }
-/* ---------------------COLOR ALEATORIO--------------------------- */
+/* ------------------COLOR ALEATORIO-------------------------------------------------- */
 let letras = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
 function colorAleatorio(){
 	let N1 = letras[aleatorio(0,15)];
@@ -87,7 +113,7 @@ function colorAleatorio(){
 	return color;
 }
 
-/* ---------------------PROPIEDADES BURBUJAS--------------------------- */
+/* ------------------PROPIEDADES BURBUJAS---------------------------------------------- */
 
 function pepitaTopFunction(){
 	let miArrayTop = [];
@@ -127,58 +153,26 @@ function pepas (){
 
 		pepita.style.position = "fixed";
 
-		pepita.style.transition = "all 0.5s";
-
-		intervalPepas();
-
-		function intervalPepas(){
-
-			z = setInterval(posicionPepas, 150);
+		function translacionPepas(){
+			translacion(pepita, coordenadas4, coordenadas1);
 		}
-
-		function posicionPepas(){
-			pepita.style.transform = `translate(${coordenadas4[x]}px , ${coordenadas1[x]}px)`;
-			//pepita.style.transform = translateY(`${coordenadas4[x]}px`);
-			if(x<=2000){
-				x = x + 1;
-				return x;
-			}else{
-				x=0
-			}
-		}
+		intervalos(translacionPepas);
 	}
 }
 
 
-/* ----------------MOVIMIENTO CUADROS------------------------*/
+/* ------------------MOVIMIENTO CUADROS----------------------------------------------------*/
 
-let x = 0;
-let y;
-let z;
-
-function intervalFoto(){
-	y = setInterval(posicionFoto, 150);
-}
+intervalos(posicionFoto);
 
 function posicionFoto(){
+	translacion(profilephoto, coordenadas1, coordenadas2);
 
-	//console.log(x);
-	
-	if(x<=2000){
-		//x = x + 1;
-
-		profilephoto.style.transition = "all 0.5s";
-		profilephoto.style.transform = `translate(${coordenadas1[x]}px , ${coordenadas2[x]}px)`;
-
-		//cardname.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas4[x]}px)`;
-		card1.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas1[x]}px)`;
-		card2.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas2[x]}px)`;
-		card3.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas3[x]}px)`;
-		card4.style.transform = `translate(${coordenadas4[x]}px , ${coordenadas1[x]}px)`;
-
-	}else{
-		x=0
-	}
+	/*translacion(cardname, coordenadas3, coordenadas4);
+	translacion(card1, coordenadas2, coordenadas1);
+	translacion(card2, coordenadas3, coordenadas2);
+	translacion(card3, coordenadas2, coordenadas3);
+	translacion(card4, coordenadas4, coordenadas1);*/
 }
 
 /* ------------------------------------------------------------------------------------------- */
@@ -187,12 +181,5 @@ let anchoMain = myBody.clientWidth;
 let altoMain = myBody.clientHeight;
 let alto2 = alto * 2;
 mainSection.style.height = `${alto2}px`;
-
-/* ----------------------------POSICION X MEDIA DE UN ELEMENTO-------------------------------- */
-function mitad (anchoElement){
-	mitadIzquierda = (window.innerWidth / 2) - (anchoElement / 2);
-	return mitadIzquierda;
-}
-
 
 /*----------------------------------------------------------------------------------------------*/
