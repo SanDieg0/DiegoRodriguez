@@ -20,46 +20,64 @@ card2.style.display = "none";
 card3.style.display = "none";
 card4.style.display = "none";
 
-/* -----------------EJECUCION DE FUNCIONES-------------------------*/
+/* ------------------EJECUCION------------------------------------------------------------------------------------------*/
 
-function primeraFuncion(){
-	//bodySection.style.display = `none`;
-	//setTimeout(funcionEjecutora, 1000);
-	funcionEjecutora();
-}
-function funcionEjecutora(){
-	//bodySection.style.display = `block`;
-	//bodySection.style.trans
-	transicion();
-	pepas();
+function ejecutar(){
+	setTimeout(pepas,5);
 }
 
+/* ------------------INTERVALOS-------------------------------------------------------*/
 
-/* -----------------UBICAR EN LA MITAD CUANDO HAY RESIZE-------------------------*/
-
-window.addEventListener("resize", objectsDimention);
-
-function objectsDimention(){
-	profilephoto.style.marginLeft = `${mitad(profilephoto.clientWidth)}px`;
-	//bodySection.style.width = `${window.innerWidth}px`;
-	cardname.style.marginLeft = `${mitad(cardname.clientWidth)}px`;
+function intervalos(fun){
+	setInterval(fun, 150);
 }
 
-	profilephoto.style.marginLeft = `${mitad(profilephoto.clientWidth)}px`;
-	bodySection.style.width = `${window.innerWidth}px`;
-	cardname.style.marginLeft = `${mitad(cardname.clientWidth)}px`;
+/* ------------------TRANSLACION------------------------------------------------------*/
+let x = 0;
+function translacion(cosa, posicionx, posiciony){
+	cosa.style.transition = "all 0.5s";
+	cosa.style.transform = `translate(${posicionx[x]}px , ${posiciony[x]}px)`;
+	if(x<=37){
+		x = x + 1;
+		return x;
+	}else{
+		x=0
+	}
+}
 
-/* ----------------COORDENADAS ALEATORIAS------------------------*/
+/* ----------------------------POSICION X MEDIA DE UN ELEMENTO-------------------------------- */
+function mitad (anchoElement){
+	mitadIzquierda = (window.innerWidth / 2) - (anchoElement / 2);
+	return mitadIzquierda;
+}
+/* ------------------UBICAR EN LA MITAD CUANDO HAY RESIZE-----------------------------*/
+
+window.addEventListener("resize", mitadCosas);
+
+function objectsDimention(cosa){
+	cosa.style.marginLeft = `${mitad(cosa.clientWidth)}px`;
+}
+function mitadCosas(){
+	objectsDimention(profilephoto);
+	objectsDimention(cardname);
+}
+
+objectsDimention(profilephoto);
+objectsDimention(cardname);
+
+bodySection.style.width = `${window.innerWidth}px`;
+
+/* ------------------COORDENADAS ALEATORIAS---------------------------------------------*/
 
 function coordenadasAleatorias(){
 	let coordenadas1 = [];
-	for(i=0; i<=2000; i++){
+	for(i=0; i<=37; i++){
 		let randomValue = Math.random();
 		let valor = 0;
 		if(randomValue<0.5){
-			valor = valor + 2;
+			valor = valor + 1.5;
 		}else{
-			valor = valor - 0.5;
+			valor = valor - 0.7;
 		}
 		coordenadas1.push(valor);
 		//console.log(coordenadas1);
@@ -67,19 +85,25 @@ function coordenadasAleatorias(){
 	return coordenadas1;
 }
 
-let coordenadas1 = coordenadasAleatorias();
-let coordenadas2 = coordenadasAleatorias();
+//let coordenadas1 = coordenadasAleatorias();
+let lascoordenadas1 = [1,2,3,4,5,6,7,7,6,5,4,3,2,1,0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0];
+let coordenadas1 = lascoordenadas1.map(function(valor){return valor*2});
+//let coordenadas2 = coordenadasAleatorias();
+let lascoordenadas2 = [1,2,3,4,3,2,1,0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,2,1,2,3,4,5];//37
+let coordenadas2 = lascoordenadas2.map(function(valor){return valor*2});
 let coordenadas3 = coordenadasAleatorias();
+//let coordenadas3 = [];
 let coordenadas4 = coordenadasAleatorias();
+//let coordenadas4 = [];
 
-/* ---------------------NUMERO ALEATORIO--------------------------- */
+/* ------------------NUMERO ALEATORIO------------------------------------------------ */
 
 function aleatorio(mini, maxi){
     let resultado;
     resultado = Math.floor(Math.random() * (maxi - mini + 1)) + mini;
     return resultado;
 }
-/* ---------------------COLOR ALEATORIO--------------------------- */
+/* ------------------COLOR ALEATORIO-------------------------------------------------- */
 let letras = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
 function colorAleatorio(){
 	let N1 = letras[aleatorio(0,15)];
@@ -95,7 +119,7 @@ function colorAleatorio(){
 	return color;
 }
 
-/* ---------------------PROPIEDADES BURBUJAS--------------------------- */
+/* ------------------PROPIEDADES BURBUJAS---------------------------------------------- */
 
 function pepitaTopFunction(){
 	let miArrayTop = [];
@@ -117,77 +141,54 @@ function pepitaLeftFunction(){
 let pepitaLeft = pepitaLeftFunction();
 
 
+let pepasSize = [60, 90, 120];
+function pepasSizeFunction(){
+	let pepasSizeAleatorio = pepasSize[aleatorio(0,2)];
+	return pepasSizeAleatorio;
+}
+
 function pepas (){
 		let coordenadax = "coordenadas"+ aleatorio(1,4);
 		let coordenaday = "coordenadas"+ aleatorio(1,4);
 	for(i=0; i<20; i++){
 		let pepita = document.createElement("div");
+		let pepasSizeValue = pepasSizeFunction();
+		console.log(pepasSizeValue);
 		bodySection.appendChild(pepita);
 
 		//pepita.style.position = "absolute";
 		pepita.style.backgroundColor = `${colorAleatorio()}`;
 		pepita.style.boxShadow = `3px 3px 10px 3px #00000022`;
-		pepita.style.width = aleatorio(90,90)+"px";
-		pepita.style.height = aleatorio(90,90)+"px";
+		pepita.style.width = pepasSizeValue+"px";
+		pepita.style.height = pepasSizeValue+"px";
 		pepita.style.borderRadius = "50%";
 		pepita.style.top = `${pepitaTop[i]*alto}px`;
-		pepita.style.left = `${pepitaLeft[i]*(ancho - 100)}px`;
+		pepita.style.left = `${pepitaLeft[i]*ancho}px`;
 
 		pepita.style.position = "fixed";
 
-		pepita.style.transition = "all 0.5s";
-		pepita.style.animation = '3s infinite alternate slidein';
-
-		transicion2();
-
-		function transicion2(){
-
-			z = setInterval(posicion2, 50);
+		function translacionPepas(){
+			translacion(pepita, coordenadas4, coordenadas1);
 		}
+		intervalos(translacionPepas);
 
-		function posicion2(){
-			pepita.style.transform = `translate(${coordenadas4[x]}px , ${coordenadas1[x]}px)`;
-			//pepita.style.transform = translateY(`${coordenadas4[x]}px`);
-			if(x<=2000){
-				x = x + 1;
-				return x;
-			}else{
-				x=0
-			}
-		}
+console.log("coordenadas 1 = "+ coordenadas1 + "  coordenadas2 "+ coordenadas2);
 	}
 }
 
 
-/* ----------------MOVIMIENTO CUADROS------------------------*/
+/* ------------------MOVIMIENTO CUADROS----------------------------------------------------*/
 
-let x = 0;
-let y;
-let z;
+intervalos(posicionFoto);
 
-function transicion(){
-	y = setInterval(posicion, 50);
-}
+function posicionFoto(){
+	translacion(profilephoto, coordenadas1, coordenadas2);
 
-function posicion(){
-
-	//console.log(x);
-	
-	if(x<=2000){
-		//x = x + 1;
-
-		profilephoto.style.transition = "all 0.5s";
-		profilephoto.style.transform = `translate(${coordenadas1[x]}px , ${coordenadas2[x]}px)`;
-
-		//cardname.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas4[x]}px)`;
-		card1.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas1[x]}px)`;
-		card2.style.transform = `translate(${coordenadas3[x]}px , ${coordenadas2[x]}px)`;
-		card3.style.transform = `translate(${coordenadas2[x]}px , ${coordenadas3[x]}px)`;
-		card4.style.transform = `translate(${coordenadas4[x]}px , ${coordenadas1[x]}px)`;
-
-	}else{
-		x=0
-	}
+	/*translacion(cardname, coordenadas3, coordenadas4);
+	translacion(card1, coordenadas2, coordenadas1);
+	translacion(card2, coordenadas3, coordenadas2);
+	translacion(card3, coordenadas2, coordenadas3);
+	translacion(card4, coordenadas4, coordenadas1);*/
 }
 
 /* ------------------------------------------------------------------------------------------- */
@@ -196,12 +197,5 @@ let anchoMain = myBody.clientWidth;
 let altoMain = myBody.clientHeight;
 let alto2 = alto * 2;
 mainSection.style.height = `${alto2}px`;
-
-/* ----------------------------POSICION X MEDIA DE UN ELEMENTO-------------------------------- */
-function mitad (anchoElement){
-	mitadIzquierda = (window.innerWidth / 2) - (anchoElement / 2);
-	return mitadIzquierda;
-}
-
 
 /*----------------------------------------------------------------------------------------------*/
