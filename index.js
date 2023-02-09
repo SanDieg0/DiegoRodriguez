@@ -23,26 +23,31 @@ card4.style.display = "none";
 /* ------------------EJECUCION------------------------------------------------------------------------------------------*/
 
 function ejecutar(){
-	setTimeout(pepas,5);
+	//setTimeout(pepas,0);
+	pepas();
 }
 
 /* ------------------INTERVALOS-------------------------------------------------------*/
 
 function intervalos(fun){
-	setInterval(fun, 150);
+	setInterval(fun, 1000);
 }
 
 /* ------------------TRANSLACION------------------------------------------------------*/
 let x = 0;
 function translacion(cosa, posicionx, posiciony){
-	cosa.style.transition = "all 0.5s";
-	cosa.style.transform = `translate(${posicionx[x]}px , ${posiciony[x]}px)`;
-	if(x<=37){
+		cosa.style.transition = "all 0.5s";
+		cosa.style.transform = `translate(${posicionx[x]}px , ${posiciony[x]}px)`;
+
+	if(x<37){
+
 		x = x + 1;
-		return x;
+
 	}else{
 		x=0
 	}
+
+
 }
 
 /* ----------------------------POSICION X MEDIA DE UN ELEMENTO-------------------------------- */
@@ -71,7 +76,7 @@ bodySection.style.width = `${window.innerWidth}px`;
 
 function coordenadasAleatorias(){
 	let coordenadas1 = [];
-	for(i=0; i<=37; i++){
+	for(i=0; i<37; i++){
 		let randomValue = Math.random();
 		let valor = 0;
 		if(randomValue<0.5){
@@ -86,11 +91,13 @@ function coordenadasAleatorias(){
 }
 
 //let coordenadas1 = coordenadasAleatorias();
-let lascoordenadas1 = [1,2,3,4,5,6,7,7,6,5,4,3,2,1,0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0];
-let coordenadas1 = lascoordenadas1.map(function(valor){return valor*2});
+//let lascoordenadas1 = [1,2,3,4,5,6,7,7,6,5,4,3,2,1,0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0];
+let lascoordenadas1 = [1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37];
+
+let coordenadas1 = lascoordenadas1.map(function(valor){return valor*1});
 //let coordenadas2 = coordenadasAleatorias();
 let lascoordenadas2 = [1,2,3,4,3,2,1,0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,2,1,2,3,4,5];//37
-let coordenadas2 = lascoordenadas2.map(function(valor){return valor*2});
+let coordenadas2 = lascoordenadas2.map(function(valor){return valor*1});
 let coordenadas3 = coordenadasAleatorias();
 //let coordenadas3 = [];
 let coordenadas4 = coordenadasAleatorias();
@@ -115,7 +122,7 @@ function colorAleatorio(){
 	let N7 = letras[aleatorio(0,6)];
 	let N8 = letras[aleatorio(0,6)];
 	let color = `#${N1 + N2 + N3 + N4 + N5 + N6 + N7 + N8}`;
-	console.log(color);
+
 	return color;
 }
 
@@ -153,7 +160,7 @@ function pepas (){
 	for(i=0; i<20; i++){
 		let pepita = document.createElement("div");
 		let pepasSizeValue = pepasSizeFunction();
-		console.log(pepasSizeValue);
+
 		bodySection.appendChild(pepita);
 
 		//pepita.style.position = "absolute";
@@ -164,25 +171,72 @@ function pepas (){
 		pepita.style.borderRadius = "50%";
 		pepita.style.top = `${pepitaTop[i]*alto}px`;
 		pepita.style.left = `${pepitaLeft[i]*ancho}px`;
+	
+		pepita.className = "pepita";
 
 		pepita.style.position = "fixed";
 
 		function translacionPepas(){
-			translacion(pepita, coordenadas4, coordenadas1);
+			translacion(pepita, coordenadas1, coordenadas1);
 		}
-		intervalos(translacionPepas);
-
-console.log("coordenadas 1 = "+ coordenadas1 + "  coordenadas2 "+ coordenadas2);
+					//intervalos(translacionPepas);
+		//translacionPepas();
+		//let translacionPepas = translacion(pepita, coordenadas1, coordenadas1);
+		//setInterval(translacionPepas, 1000);
 	}
+
+}
+let pepita1 = document.getElementsByClassName('pepita')[0];
+let pepita2 = document.getElementsByClassName('pepita')[1];
+let pepita3 = document.getElementsByClassName('pepita')[2];
+let pepita4 = document.getElementsByClassName('pepita')[3];
+let pepita5 = document.getElementsByClassName('pepita')[4];
+let pepita6 = document.getElementsByClassName('pepita')[5];
+let pepita7 = document.getElementsByClassName('pepita')[6];
+let pepita8 = document.getElementsByClassName('pepita')[7];
+let pepita9 = document.getElementsByClassName('pepita')[8];
+let pepita10 = document.getElementsByClassName('pepita')[9];
+let pepita11 = document.getElementsByClassName('pepita')[10];
+let pepita12 = document.getElementsByClassName('pepita')[11];
+let pepita13 = document.getElementsByClassName('pepita')[12];
+let pepita14 = document.getElementsByClassName('pepita')[13];
+let pepita15 = document.getElementsByClassName('pepita')[14];
+let pepita16 = document.getElementsByClassName('pepita')[15];
+let pepita17 = document.getElementsByClassName('pepita')[16];
+let pepita18 = document.getElementsByClassName('pepita')[17];
+let pepita19 = document.getElementsByClassName('pepita')[18];
+let pepita20 = document.getElementsByClassName('pepita')[19];
+intervalos(posicionPepita);
+function posicionPepita(){
+	translacion(pepita20, coordenadas1, coordenadas1);
+translacion(pepita1, coordenadas1, coordenadas1);
+translacion(pepita2, coordenadas1, coordenadas1);
+translacion(pepita3, coordenadas1, coordenadas1);
+translacion(pepita4, coordenadas1, coordenadas1);
+translacion(pepita5, coordenadas1, coordenadas1);
+translacion(pepita6, coordenadas1, coordenadas1);
+translacion(pepita7, coordenadas1, coordenadas1);
+translacion(pepita8, coordenadas1, coordenadas1);
+translacion(pepita9, coordenadas1, coordenadas1);
+translacion(pepita10, coordenadas1, coordenadas1);
+translacion(pepita11, coordenadas1, coordenadas1);
+translacion(pepita12, coordenadas1, coordenadas1);
+translacion(pepita13, coordenadas1, coordenadas1);
+translacion(pepita14, coordenadas1, coordenadas1);
+translacion(pepita15, coordenadas1, coordenadas1);
+translacion(pepita16, coordenadas1, coordenadas1);
+translacion(pepita17, coordenadas1, coordenadas1);
+translacion(pepita18, coordenadas1, coordenadas1);
+translacion(pepita19, coordenadas1, coordenadas1);
+
 }
 
 
 /* ------------------MOVIMIENTO CUADROS----------------------------------------------------*/
 
 intervalos(posicionFoto);
-
 function posicionFoto(){
-	translacion(profilephoto, coordenadas1, coordenadas2);
+	translacion(profilephoto, coordenadas1, coordenadas1);
 
 	/*translacion(cardname, coordenadas3, coordenadas4);
 	translacion(card1, coordenadas2, coordenadas1);
