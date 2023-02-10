@@ -22,10 +22,10 @@ card4.style.display = "none";
 
 /* ------------------EJECUCION------------------------------------------------------------------------------------------*/
 
-function ejecutar(){
+//function ejecutar(){
 	//setTimeout(pepas,0);
-	pepas();
-}
+//	pepas();
+//}
 
 /* ------------------INTERVALOS-------------------------------------------------------*/
 
@@ -154,6 +154,8 @@ function pepasSizeFunction(){
 	return pepasSizeAleatorio;
 }
 let pepita = [];
+
+pepas();
 function pepas (){
 		let coordenadax = "coordenadas"+ aleatorio(1,4);
 		let coordenaday = "coordenadas"+ aleatorio(1,4);
@@ -175,17 +177,65 @@ function pepas (){
 	}
 
 }
+
+intervalos(translacionPepas);
 function translacionPepas(){
 	for(i=0; i<21;i++){
-		translacion(pepita[i], coordenadas1, coordenadas1);
+		//translacion(pepita[i], coordenadas1, coordenadas1);
 	}
+translacion(pepita[0], coordenadas1, coordenadas1);
 }
-setInterval(translacionPepas, 1000);
+
+/*
+intervalos(translacionPepas1);
+function translacionPepas1(){
+translacion(pepita[1], coordenadas1, coordenadas1);
+}
+intervalos(translacionPepas2);
+function translacionPepas2(){
+translacion(pepita[2], coordenadas1, coordenadas1);
+}
+
+intervalos(translacionPepas3);
+function translacionPepas3(){
+translacion(pepita[3], coordenadas1, coordenadas1);
+}
+
+intervalos(translacionPepas4);
+function translacionPepas4(){
+translacion(pepita[4], coordenadas1, coordenadas1);
+}
+
+intervalos(translacionPepas5);
+function translacionPepas5(){
+translacion(pepita[5], coordenadas1, coordenadas1);
+}
+
+intervalos(translacionPepas6);
+function translacionPepas6(){
+translacion(pepita[6], coordenadas1, coordenadas1);
+}
+
+intervalos(translacionPepas7);
+function translacionPepas7(){
+translacion(pepita[7], coordenadas1, coordenadas1);
+}
+
+intervalos(translacionPepas8);
+function translacionPepas8(){
+translacion(pepita[8], coordenadas1, coordenadas1);
+}
+
+*/
+
+
+//setInterval(translacionPepas, 1000);
+
 
 
 /* ------------------MOVIMIENTO CUADROS----------------------------------------------------*/
 
-intervalos(posicionFoto);
+//intervalos(posicionFoto);
 function posicionFoto(){
 	translacion(profilephoto, coordenadas1, coordenadas1);
 
