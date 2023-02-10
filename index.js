@@ -130,7 +130,7 @@ function colorAleatorio(){
 
 function pepitaTopFunction(){
 	let miArrayTop = [];
-	for(i=0; i<20; i++){
+	for(i=0; i<21; i++){
 		miArrayTop.push(Math.random());
 	}
 	return miArrayTop;
@@ -140,7 +140,7 @@ let pepitaTop = pepitaTopFunction();
 
 function pepitaLeftFunction(){
 	let miArrayLeft = [];
-	for(i=0; i<20; i++){
+	for(i=0; i<21; i++){
 		miArrayLeft.push(Math.random());
 	}
 	return miArrayLeft;
@@ -153,83 +153,34 @@ function pepasSizeFunction(){
 	let pepasSizeAleatorio = pepasSize[aleatorio(0,2)];
 	return pepasSizeAleatorio;
 }
-
+let pepita = [];
 function pepas (){
 		let coordenadax = "coordenadas"+ aleatorio(1,4);
 		let coordenaday = "coordenadas"+ aleatorio(1,4);
-	for(i=0; i<20; i++){
-		let pepita = document.createElement("div");
+
+	for(i=0; i<21; i++){
+		let pepi = document.getElementsByClassName('pepita')[i];
+		pepita.push(pepi);
 		let pepasSizeValue = pepasSizeFunction();
 
-		bodySection.appendChild(pepita);
+		pepita[i].style.backgroundColor = `${colorAleatorio()}`;
+		pepita[i].style.boxShadow = `3px 3px 10px 3px #00000022`;
+		pepita[i].style.width = pepasSizeValue+"px";
+		pepita[i].style.height = pepasSizeValue+"px";
+		pepita[i].style.borderRadius = "50%";
+		pepita[i].style.top = `${pepitaTop[i]*alto}px`;
+		pepita[i].style.left = `${pepitaLeft[i]*ancho}px`;
 
-		//pepita.style.position = "absolute";
-		pepita.style.backgroundColor = `${colorAleatorio()}`;
-		pepita.style.boxShadow = `3px 3px 10px 3px #00000022`;
-		pepita.style.width = pepasSizeValue+"px";
-		pepita.style.height = pepasSizeValue+"px";
-		pepita.style.borderRadius = "50%";
-		pepita.style.top = `${pepitaTop[i]*alto}px`;
-		pepita.style.left = `${pepitaLeft[i]*ancho}px`;
-	
-		pepita.className = "pepita";
-
-		pepita.style.position = "fixed";
-
-		function translacionPepas(){
-			translacion(pepita, coordenadas1, coordenadas1);
-		}
-					//intervalos(translacionPepas);
-		//translacionPepas();
-		//let translacionPepas = translacion(pepita, coordenadas1, coordenadas1);
-		//setInterval(translacionPepas, 1000);
+		pepita[i].style.position = "fixed";
 	}
 
 }
-let pepita1 = document.getElementsByClassName('pepita')[0];
-let pepita2 = document.getElementsByClassName('pepita')[1];
-let pepita3 = document.getElementsByClassName('pepita')[2];
-let pepita4 = document.getElementsByClassName('pepita')[3];
-let pepita5 = document.getElementsByClassName('pepita')[4];
-let pepita6 = document.getElementsByClassName('pepita')[5];
-let pepita7 = document.getElementsByClassName('pepita')[6];
-let pepita8 = document.getElementsByClassName('pepita')[7];
-let pepita9 = document.getElementsByClassName('pepita')[8];
-let pepita10 = document.getElementsByClassName('pepita')[9];
-let pepita11 = document.getElementsByClassName('pepita')[10];
-let pepita12 = document.getElementsByClassName('pepita')[11];
-let pepita13 = document.getElementsByClassName('pepita')[12];
-let pepita14 = document.getElementsByClassName('pepita')[13];
-let pepita15 = document.getElementsByClassName('pepita')[14];
-let pepita16 = document.getElementsByClassName('pepita')[15];
-let pepita17 = document.getElementsByClassName('pepita')[16];
-let pepita18 = document.getElementsByClassName('pepita')[17];
-let pepita19 = document.getElementsByClassName('pepita')[18];
-let pepita20 = document.getElementsByClassName('pepita')[19];
-intervalos(posicionPepita);
-function posicionPepita(){
-	translacion(pepita20, coordenadas1, coordenadas1);
-translacion(pepita1, coordenadas1, coordenadas1);
-translacion(pepita2, coordenadas1, coordenadas1);
-translacion(pepita3, coordenadas1, coordenadas1);
-translacion(pepita4, coordenadas1, coordenadas1);
-translacion(pepita5, coordenadas1, coordenadas1);
-translacion(pepita6, coordenadas1, coordenadas1);
-translacion(pepita7, coordenadas1, coordenadas1);
-translacion(pepita8, coordenadas1, coordenadas1);
-translacion(pepita9, coordenadas1, coordenadas1);
-translacion(pepita10, coordenadas1, coordenadas1);
-translacion(pepita11, coordenadas1, coordenadas1);
-translacion(pepita12, coordenadas1, coordenadas1);
-translacion(pepita13, coordenadas1, coordenadas1);
-translacion(pepita14, coordenadas1, coordenadas1);
-translacion(pepita15, coordenadas1, coordenadas1);
-translacion(pepita16, coordenadas1, coordenadas1);
-translacion(pepita17, coordenadas1, coordenadas1);
-translacion(pepita18, coordenadas1, coordenadas1);
-translacion(pepita19, coordenadas1, coordenadas1);
-
+function translacionPepas(){
+	for(i=0; i<21;i++){
+		translacion(pepita[i], coordenadas1, coordenadas1);
+	}
 }
+setInterval(translacionPepas, 1000);
 
 
 /* ------------------MOVIMIENTO CUADROS----------------------------------------------------*/
