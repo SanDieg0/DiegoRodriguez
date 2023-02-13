@@ -160,7 +160,31 @@ function pepas (){
 		let coordenadax = "coordenadas"+ aleatorio(1,4);
 		let coordenaday = "coordenadas"+ aleatorio(1,4);
 
-	for(i=0; i<21; i++){
+
+	const pepitas = document.querySelectorAll('.pepita');
+	for(const pepita of pepitas){
+		//pepita.addEventListener
+		let pepasSizeValue = pepasSizeFunction();
+
+		pepita.style.backgroundColor = `${colorAleatorio()}`;
+		pepita.style.boxShadow = `3px 3px 10px 3px #00000022`;
+		pepita.style.width = pepasSizeValue+"px";
+		pepita.style.height = pepasSizeValue+"px";
+		pepita.style.borderRadius = "50%";
+		pepita.style.top = `${pepitaTop[i]*alto}px`;
+		pepita.style.left = `${pepitaLeft[i]*ancho}px`;
+
+		pepita.style.position = "fixed";		
+
+
+
+		intervalos(translacionPepas);
+		function translacionPepas(){
+			translacion(pepita, coordenadas1, coordenadas1);
+		}
+	}
+
+	/*for(i=0; i<21; i++){
 		let pepi = document.getElementsByClassName('pepita')[i];
 		pepita.push(pepi);
 		let pepasSizeValue = pepasSizeFunction();
@@ -174,10 +198,17 @@ function pepas (){
 		pepita[i].style.left = `${pepitaLeft[i]*ancho}px`;
 
 		pepita[i].style.position = "fixed";
-	}
+
+
+	}*/
 
 }
 
+
+
+
+
+/*
 intervalos(translacionPepas);
 function translacionPepas(){
 	for(i=0; i<21;i++){
@@ -186,7 +217,7 @@ function translacionPepas(){
 translacion(pepita[0], coordenadas1, coordenadas1);
 }
 
-/*
+
 intervalos(translacionPepas1);
 function translacionPepas1(){
 translacion(pepita[1], coordenadas1, coordenadas1);
